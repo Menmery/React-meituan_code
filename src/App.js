@@ -2,7 +2,7 @@ import NavBar from './components/NavBar'
 import Menu from './components/Menu'
 import Cart from './components/Cart'
 import FoodsCategory from './components/FoodsCategory'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchFoodsList } from './store/modules/takeaway'
 
@@ -66,10 +66,14 @@ const foodsList = [
 ]
 
 const App = () => {
+  // 触发action执行
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchFoodsList())
   }, [dispatch])
+
+  // 获取foodsList
+  const { foodsList } = useSelector(state => state.foods)
   return (
     <div className="home">
       {/* 导航 */}
