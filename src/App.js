@@ -16,6 +16,7 @@ const App = () => {
   }, [dispatch])
 
   // 获取foodsList
+  // useSelector会订阅state变化，当state变化时，会重新渲染组件
   const { foodsList } = useSelector(state => state.foods)
   return (
     <div className="home">
